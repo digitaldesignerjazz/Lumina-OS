@@ -1,0 +1,36 @@
+name: Build ISO (Placeholder)
+
+on:
+  workflow_dispatch:   # Manual trigger only for now
+  push:
+    branches: [ main ]
+    paths:
+      - 'debian/**'
+      - 'scripts/**'
+      - 'configs/**'
+      - '.github/workflows/build-iso.yml'
+
+jobs:
+  build-iso:
+    name: Build Lumina OS ISO
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check build readiness
+        run: |
+          echo "ISO build pipeline is prepared but not yet fully implemented."
+          echo "This workflow will later:"
+          echo "  1. Install live-build / debootstrap"
+          echo "  2. Apply Lumina configurations"
+          echo "  3. Integrate Yggdrasil & AI Swarm"
+          echo "  4. Produce a bootable ISO"
+          echo ""
+          echo "Current status: Placeholder – ready for expansion."
+
+      # Future steps will be added here:
+      # - Install dependencies
+      # - Run build scripts
+      # - Upload ISO artifact
