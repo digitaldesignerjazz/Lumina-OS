@@ -1,0 +1,20 @@
+#!/bin/sh
+#==============================================================================
+# Lumina OS – Branding Hook (chroot)
+#==============================================================================
+# This hook runs inside the chroot during the build process.
+# It will later set up branding, motd, issue, and default settings.
+#==============================================================================
+
+set -e
+
+echo "Lumina OS: Applying initial branding..."
+
+# Example: set a custom /etc/motd
+cat > /etc/motd << EOF
+Welcome to Lumina OS
+
+A living Debian-based system with deep Nexus integration.
+EOF
+
+echo "Lumina OS branding hook finished."
