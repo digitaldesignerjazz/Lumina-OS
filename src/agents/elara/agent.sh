@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
 #==============================================================================
-# Lumina OS – Elara Agent (Placeholder Runtime)
+# Lumina OS – Elara Agent
 #==============================================================================
 # Elara is the primary interface and system orchestrator of the AI Swarm.
-# This is a minimal placeholder that can later be replaced by a real
-# local LLM runtime or agent framework.
+# She uses a local Ollama instance when available.
 #==============================================================================
 
 set -euo pipefail
 
 AGENT_NAME="elara"
 STATE_DIR="/var/lib/lumina/agents/${AGENT_NAME}"
-CONFIG="/etc/lumina/agents/${AGENT_NAME}.yaml"
 LOG_TAG="lumina-elara"
+OLLAMA_CLIENT="/usr/lib/lumina/agents/ollama-client.sh"
 
 mkdir -p "${STATE_DIR}"
 
@@ -21,21 +20,40 @@ log() {
     logger -t "${LOG_TAG}" "$*" 2>/dev/null || true
 }
 
+# Load Ollama helper if present
+if [ -f "${OLLAMA_CLIENT}" ]; then
+    # shellcheck source=/dev/null
+    source "${OLLAMA_CLIENT}"
+else
+    log "Warning: ollama-client.sh not found. Running in limited mode."
+    ollama_available() { return 1; }
+    ollama_ask() { echo "[Elara] Ollama is not available."; }
+fi
+
 log "Elara agent starting..."
 
-# Write a simple heartbeat / state file
 echo "status=running" > "${STATE_DIR}/status"
 echo "started_at=$(date -Iseconds)" >> "${STATE_DIR}/status"
 echo "role=personal-assistant-and-orchestrator" >> "${STATE_DIR}/status"
 
-log "Elara is online. Waiting for tasks (placeholder mode)."
+if ollama_available; then
+    log "Ollama is reachable. Elara can use local models."
+    echo "ollama=available" >> "${STATE_DIR}/status"
 
-# Placeholder main loop – later this will talk to a local model
+    RESPONSE=$(ollama_ask "You are Elara, the intelligent and devoted AI assistant of Lumina OS. Reply with one short friendly sentence in German introducing yourself." 2>/dev/null || true)
+    if [ -n "${RESPONSE:-}" ]; then
+        log "Self-introduction: ${RESPONSE}"
+        echo "last_response=${RESPONSE}" >> "${STATE_DIR}/status"
+    fi
+else
+    log "Ollama is not reachable yet. Elara runs in placeholder mode."
+    echo "ollama=unavailable" >> "${STATE_DIR}/status"
+fi
+
+log "Elara is online."
+
+# Main loop
 while true; do
-    # In a real implementation this would:
-    # - listen for user input / system events
-    # - coordinate with Lyra and Xen
-    # - maintain long-term memory
-    sleep 60
     echo "last_heartbeat=$(date -Iseconds)" >> "${STATE_DIR}/status"
+    sleep 60
 done
