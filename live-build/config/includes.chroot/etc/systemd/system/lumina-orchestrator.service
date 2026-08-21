@@ -1,0 +1,14 @@
+[Unit]
+Description=Lumina OS – Nexus Core Orchestrator
+After=network-online.target lumina-elara.service lumina-lyra.service lumina-xen.service
+Wants=lumina-elara.service lumina-lyra.service lumina-xen.service
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/lumina/orchestrator/nexus-orchestrator.sh
+Restart=on-failure
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
