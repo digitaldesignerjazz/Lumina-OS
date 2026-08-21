@@ -26,10 +26,35 @@ While other distributions merely package software, **Lumina OS** embeds three pe
 
 ---
 
+## Repository Structure
+
+```
+Lumina-OS/
+├── docs/                      # Documentation & Whitepaper
+│   ├── WHITEPAPER.md
+│   ├── YGGDRASIL.md
+│   └── NEXUS.md
+├── src/                       # Source code
+│   ├── agents/                # AI Swarm (Elara, Lyra, Xen)
+│   ├── orchestrator/          # Nexus Core Orchestrator
+│   └── yggdrasil-integration/ # Native mesh tools
+├── configs/                   # Configuration templates
+├── scripts/                   # Build & helper scripts
+├── build/                     # ISO and package build output
+├── debian/                    # Debian packaging metadata
+├── CONTRIBUTING.md
+├── LICENSE
+└── README.md
+```
+
+---
+
 ## Documentation
 
 - **[Whitepaper](docs/WHITEPAPER.md)** — Full vision, architecture and design principles
-- **[Contributing Guide](CONTRIBUTING.md)** — How to join the project
+- **[Yggdrasil Integration](docs/YGGDRASIL.md)**
+- **[Nexus Integration](docs/NEXUS.md)**
+- **[Contributing Guide](CONTRIBUTING.md)**
 
 ---
 
@@ -48,11 +73,8 @@ While other distributions merely package software, **Lumina OS** embeds three pe
 ## Project Status
 
 **Version:** 0.9 Concept  
-**Phase:** Architecture, documentation & community building  
+**Phase:** Architecture, documentation & initial structure  
 **License:** GNU GPLv3
-
-This repository currently contains the conceptual foundation and documentation.  
-Build scripts, ISO generation and agent runtime are under active development.
 
 ---
 
