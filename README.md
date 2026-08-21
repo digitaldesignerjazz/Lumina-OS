@@ -26,45 +26,48 @@ While other distributions merely package software, **Lumina OS** embeds three pe
 
 ---
 
+## Documentation
+
+- **[Whitepaper](docs/WHITEPAPER.md)** — Full vision, architecture and design principles
+- **[Contributing Guide](CONTRIBUTING.md)** — How to join the project
+
+---
+
 ## Technical Foundation
 
-- Base: **Debian 13 (Trixie)** – pure and minimal
-- Desktop: Configurable (GNOME / KDE Plasma / lightweight options)
-- Network: Yggdrasil as primary mesh identity
-- AI Layer: Local + optional cloud hybrid agents with persistent memory
-- Philosophy: Digital sovereignty, privacy, and living intelligence
+| Layer              | Technology                          |
+|--------------------|-------------------------------------|
+| Base System        | Pure Debian 13 “Trixie”             |
+| Network Identity   | Native Yggdrasil (closed overlay)   |
+| AI Layer           | Persistent multi-agent swarm        |
+| Orchestration      | Nexus Core Orchestrator             |
+| Philosophy         | Digital sovereignty + living intelligence |
 
 ---
 
 ## Project Status
 
-**Version:** 1.0 Concept / Early Development  
-**Whitepaper:** Available in `/docs` (coming soon)  
-**Current Phase:** Architecture & community building
+**Version:** 0.9 Concept  
+**Phase:** Architecture, documentation & community building  
+**License:** GNU GPLv3
 
-This repository currently contains the conceptual foundation, documentation and contribution guidelines.  
-Build scripts, ISO generation and agent integration are under active development.
+This repository currently contains the conceptual foundation and documentation.  
+Build scripts, ISO generation and agent runtime are under active development.
 
 ---
 
 ## Getting Involved
 
-We are looking for passionate developers, designers and visionaries who want to help build a truly different kind of operating system.
+We are looking for passionate developers who want to help build a truly different kind of operating system.
 
-See **[CONTRIBUTING.md](CONTRIBUTING.md)** for how to join.
-
-Areas of particular interest:
-- Debian packaging & ISO building
-- Yggdrasil deep integration
-- Local AI agent frameworks & persistent memory
+**Priority areas:**
+- Debian packaging & reproducible ISO builds
+- Deep Yggdrasil integration
+- Local AI agent frameworks with persistent memory
 - Desktop integration of the AI Swarm
 - Security & privacy hardening
 
----
-
-## License
-
-This project is released under the **GNU General Public License v3.0** (see [LICENSE](LICENSE)).
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for details.
 
 ---
 
