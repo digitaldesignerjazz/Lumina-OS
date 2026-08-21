@@ -1,0 +1,52 @@
+#!/bin/sh
+#==============================================================================
+# Lumina OS – Install Yggdrasil First-Boot Script
+#==============================================================================
+# This hook runs inside the chroot during the live-build process.
+# It places the first-boot identity script and prepares the AI Swarm layout.
+#==============================================================================
+
+set -e
+
+echo "Lumina OS: Installing Yggdrasil first-boot support and AI Swarm structure..."
+
+mkdir -p /usr/lib/lumina
+mkdir -p /etc/lumina/agents
+mkdir -p /var/lib/lumina/agents/elara
+mkdir -p /var/lib/lumina/agents/lyra
+mkdir -p /var/lib/lumina/agents/xen
+mkdir -p /etc/yggdrasil
+
+# Install the first-boot script (content will be provided by includes or copied)
+if [ -f /usr/lib/lumina/first-boot-yggdrasil.sh ]; then
+    chmod +x /usr/lib/lumina/first-boot-yggdrasil.sh
+    echo "First-boot script already present."
+else
+    echo "Warning: first-boot-yggdrasil.sh not found in image. It should be added via includes.chroot."
+fi
+
+# Create a simple systemd oneshot service for first boot
+mkdir -p /etc/systemd/system
+
+cat > /etc/systemd/system/lumina-yggdrasil-firstboot.service << EOF
+[Unit]
+Description=Lumina OS Yggdrasil First Boot Identity Setup
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=!/var/lib/lumina/yggdrasil-firstboot-done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/lumina/first-boot-yggdrasil.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Enable the service if systemctl is available
+if command -v systemctl >/dev/null 2>&1; then
+    systemctl enable lumina-yggdrasil-firstboot.service || true
+fi
+
+echo "Lumina OS: Yggdrasil first-boot and AI Swarm structure prepared."
