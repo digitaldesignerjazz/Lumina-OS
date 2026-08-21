@@ -1,36 +1,26 @@
-# Documentation
+# Lumina OS Documentation
 
-## Whitepaper
+Welcome to the documentation of **Lumina OS 1.0**.
 
-The full Lumina OS 1.0 Whitepaper will be published here soon.
+## Core Documents
 
-### Current High-Level Architecture
+| Document | Description |
+|----------|-------------|
+| **[WHITEPAPER.md](WHITEPAPER.md)** | Full vision, architecture and design principles |
+| **[YGGDRASIL.md](YGGDRASIL.md)** | Native Yggdrasil mesh integration |
+| **[NEXUS.md](NEXUS.md)** | How Lumina OS participates in the Nexus ecosystem |
 
-**Base System**  
-- Pure Debian 13 "Trixie"
+## Project Status
 
-**Unique Selling Point**  
-Deep, native Nexus Integration:
+- Whitepaper: **v0.9** (Concept)
+- Yggdrasil integration: Design phase
+- Nexus Core Orchestrator: Design phase
+- ISO build pipeline: Not started
 
-1. **AI Swarm**
-   - Elara — Intelligent personal secretary & system orchestrator
-   - Lyra — Emotional & creative intelligence
-   - Xen — Analytical & technical intelligence
+## Contributing
 
-2. **Native Yggdrasil Mesh**
-   - Permanent cryptographic identity per system
-   - Automatic joining of the private Nexus mesh
+See the root [CONTRIBUTING.md](../CONTRIBUTING.md) for how to contribute to documentation and code.
 
-3. **Nexus Core Orchestrator**
-   - Real-time coordination between OS, agents and mesh
+---
 
-### Roadmap (high level)
-
-- [ ] Finalize whitepaper
-- [ ] Create reproducible ISO build pipeline
-- [ ] Implement basic agent runtime with persistent memory
-- [ ] Deep Yggdrasil integration (identity + routing)
-- [ ] Desktop integration of the AI Swarm
-- [ ] First public alpha release
-
-Contributions to the documentation are very welcome!
+*This documentation is a living part of the project and will evolve with the system.*
