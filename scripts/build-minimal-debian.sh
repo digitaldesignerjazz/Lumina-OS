@@ -7,6 +7,7 @@
 #
 # Usage:
 #   sudo ./scripts/build-minimal-debian.sh
+#   sudo ./scripts/build-minimal-debian.sh /custom/path
 #==============================================================================
 
 set -euo pipefail
@@ -16,8 +17,11 @@ set -euo pipefail
 #------------------------------------------------------------------------------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-BUILD_DIR="${PROJECT_ROOT}/build"
-CHROOT_DIR="${BUILD_DIR}/minimal-debian"
+
+# Default target – prefer /tmp if the project directory is on a noexec mount
+DEFAULT_TARGET="/tmp/lumina-minimal-debian"
+CHROOT_DIR="${1:-$DEFAULT_TARGET}"
+
 DISTRO="trixie"
 MIRROR="http://deb.debian.org/debian"
 ARCH="amd64"
@@ -66,7 +70,7 @@ main() {
         rm -rf "${CHROOT_DIR}"
     fi
 
-    mkdir -p "${BUILD_DIR}"
+    mkdir -p "$(dirname "${CHROOT_DIR}")"
 
     log "Starting debootstrap (this can take several minutes)..."
     debootstrap \
@@ -82,17 +86,14 @@ main() {
     # Basic configuration inside the chroot
     log "Applying basic Lumina configuration..."
 
-    # Hostname
     echo "lumina" > "${CHROOT_DIR}/etc/hostname"
 
-    # Simple motd
     cat > "${CHROOT_DIR}/etc/motd" << EOF
 Welcome to Lumina OS (Minimal Base)
 
 This is a minimal Debian ${DISTRO} system prepared for Lumina OS.
 EOF
 
-    # DNS (so the chroot can resolve names)
     cat > "${CHROOT_DIR}/etc/resolv.conf" << EOF
 nameserver 1.1.1.1
 nameserver 8.8.8.8
