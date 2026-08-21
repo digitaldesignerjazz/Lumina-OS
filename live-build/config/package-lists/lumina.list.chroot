@@ -1,0 +1,39 @@
+#==============================================================================
+# Lumina OS – Package List (chroot)
+#==============================================================================
+# Packages that will be installed into the live system.
+#==============================================================================
+
+# --- Base system & utilities ---
+live-boot
+live-config
+live-config-systemd
+sudo
+curl
+wget
+git
+rsync
+ca-certificates
+apt-transport-https
+
+# --- Network & Mesh ---
+# yggdrasil will be added once packaging is ready
+# For now we keep the list clean and minimal
+
+# --- Desktop (example – can be changed later) ---
+# Uncomment one of the following groups later:
+# task-gnome-desktop
+# task-kde-desktop
+# task-xfce-desktop
+
+# --- AI Swarm related (placeholders) ---
+# python3
+# python3-pip
+# python3-venv
+
+# --- System tools ---
+htop
+tmux
+vim
+nano
+less
