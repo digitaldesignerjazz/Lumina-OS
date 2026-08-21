@@ -1,0 +1,29 @@
+#!/bin/sh
+#==============================================================================
+# Lumina OS – live-build configuration
+#==============================================================================
+# This file is used by live-build (lb config) to set the base parameters.
+#==============================================================================
+
+set -e
+
+lb config noauto \
+    --mode debian \
+    --distribution trixie \
+    --archive-areas "main contrib non-free non-free-firmware" \
+    --binary-images iso-hybrid \
+    --bootappend-live "boot=live components quiet splash" \
+    --debian-installer none \
+    --debian-installer-gui false \
+    --firmware-binary true \
+    --firmware-chroot true \
+    --iso-application "Lumina OS" \
+    --iso-preparer "Lumina OS Team" \
+    --iso-publisher "Esslinger Consulting / Nexus Project" \
+    --iso-volume "LUMINA_OS" \
+    --memtest none \
+    --win32-loader false \
+    --apt-indices false \
+    --apt-recommends true \
+    --debian-installer-distribution trixie \
+    "${@}"
