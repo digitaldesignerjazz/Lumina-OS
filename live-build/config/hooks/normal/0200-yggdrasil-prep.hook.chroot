@@ -1,0 +1,21 @@
+#!/bin/sh
+#==============================================================================
+# Lumina OS – Yggdrasil Preparation Hook
+#==============================================================================
+# This hook will later:
+#   - Install Yggdrasil
+#   - Prepare identity generation on first boot
+#   - Configure the closed Nexus overlay
+#==============================================================================
+
+set -e
+
+echo "Lumina OS: Yggdrasil preparation hook (currently placeholder)"
+
+# Future content:
+# - Install yggdrasil package
+# - Create /etc/yggdrasil directory structure
+# - Place first-boot identity script
+# - Enable yggdrasil service
+
+echo "Yggdrasil preparation hook finished."
