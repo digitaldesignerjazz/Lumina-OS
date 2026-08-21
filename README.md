@@ -42,10 +42,23 @@ Lumina-OS/
 ├── scripts/                   # Build & helper scripts
 ├── build/                     # ISO and package build output
 ├── debian/                    # Debian packaging metadata
+├── .github/workflows/         # CI/CD Pipelines
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md
 ```
+
+---
+
+## CI/CD
+
+This repository uses **GitHub Actions** for continuous integration:
+
+- **CI Pipeline** (`.github/workflows/ci.yml`)  
+  Runs on every push and pull request. Checks project structure, required files and basic validation.
+
+- **ISO Build Pipeline** (`.github/workflows/build-iso.yml`)  
+  Placeholder workflow prepared for future automated ISO generation. Can be triggered manually.
 
 ---
 
@@ -73,7 +86,7 @@ Lumina-OS/
 ## Project Status
 
 **Version:** 0.9 Concept  
-**Phase:** Architecture, documentation & initial structure  
+**Phase:** Architecture, documentation, structure & CI  
 **License:** GNU GPLv3
 
 ---
