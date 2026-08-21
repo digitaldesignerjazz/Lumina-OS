@@ -17,19 +17,13 @@ ca-certificates
 apt-transport-https
 
 # --- Network & Mesh ---
-# yggdrasil will be added once packaging is ready
-# For now we keep the list clean and minimal
+# yggdrasil is installed via its own repository / first-boot logic
 
-# --- Desktop (example – can be changed later) ---
-# Uncomment one of the following groups later:
-# task-gnome-desktop
-# task-kde-desktop
-# task-xfce-desktop
-
-# --- AI Swarm related (placeholders) ---
-# python3
-# python3-pip
-# python3-venv
+# --- AI Swarm related ---
+python3
+python3-pip
+python3-venv
+curl
 
 # --- System tools ---
 htop
@@ -37,3 +31,6 @@ tmux
 vim
 nano
 less
+
+# Note: Ollama itself is installed via the official install script
+# (see scripts/setup-ollama.sh) because it is not in the main Debian repos.
