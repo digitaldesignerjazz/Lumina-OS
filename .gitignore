@@ -1,0 +1,40 @@
+# Build artifacts
+*.iso
+*.img
+*.qcow2
+*.vdi
+*.vmdk
+build/
+output/
+dist/
+*.deb
+*.tar.gz
+*.tar.xz
+
+# Temporary files
+*~
+*.tmp
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.sublime-*
+
+# Python (if agent tools use it)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Secrets (never commit)
+*.key
+*.pem
+*.crt
+.env
+credentials/
+secrets/
