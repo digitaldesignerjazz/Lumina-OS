@@ -63,18 +63,19 @@ main() {
     echo "=============================================="
     echo
 
-    # Create required directories
-    log "Creating build directories..."
+    # Create required directories FIRST (before any logging to file)
     mkdir -p "${ISO_DIR}" "${LOG_DIR}" "${BUILD_DIR}/cache" "${BUILD_DIR}/chroot"
+
+    # Now it is safe to log
+    log "Creating build directories..."
     success "Build directories ready"
 
-    # Start logging
     log "Logging to: ${LOG_FILE}"
     echo "Build started at $(date)" >> "${LOG_FILE}"
 
     # Check dependencies
     log "Checking build dependencies..."
-    if ! "${SCRIPT_DIR}/check-build-deps.sh"; then
+    if ! bash "${SCRIPT_DIR}/check-build-deps.sh"; then
         error "Missing build dependencies. Please install them and try again."
     fi
     success "Dependencies OK"
@@ -103,8 +104,8 @@ main() {
 
     success "Build environment successfully prepared."
     echo
-    echo "You can now start developing the actual live-build"
-    echo "configuration under the debian/ and configs/ directories."
+    echo "You can now continue developing the live-build"
+    echo "configuration under the live-build/ directory."
     echo
 }
 
